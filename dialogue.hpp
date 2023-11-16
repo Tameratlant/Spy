@@ -2,7 +2,7 @@
 #include "date.hpp"
 #include <fstream>
 #include <list>
-#include </home/tamerlan/workspace/Spy/json/single_include/nlohmann/json.hpp>
+#include </home/tamerlan/workspace/json/single_include/nlohmann/json.hpp>
 
 using json = nlohmann::json;
 
@@ -22,11 +22,26 @@ public:
     void dump() {
         std:: cout << "Message from:\n" << name << '\n'; date.dump();
     }
+    Date get_date() {
+        return date;
+    }
+    std::string get_name() {
+        return name;
+    }
 };
 
 class dialogue{
     std::vector <message> data;
     size_t size;
+    int search(const Date date) {           //тут будет бинпоиск, честно
+
+        for (int i = 0; i < size; ++i) {
+            if ((data[i].get_date() < date) & (data[i+1].get_date() > date))
+                return i;
+        }
+
+
+    }
 public:
     dialogue(json data_) {
         size_t len = data_["messages"].size();
@@ -49,8 +64,15 @@ public:
     size_t get_size() {
         return size;
     }
-    std::vector <std::pair<int, int>>* count(Date l, Date r, std::string name) {
-
+    void count(Date l, Date r, std::string name, int* count_name, int* count_total) {
+        int left = search(l);
+        int right = search(r);
+        int count = 0;
+        for (int i = left; i < right; ++i) {
+            if (data[i].get_name() == name) count++;
+        }
+        *count_name = count;
+        *count_total = right - left;
     }
 
 

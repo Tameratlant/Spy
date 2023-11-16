@@ -9,8 +9,9 @@ private:
     int d;
     int h;
     int min;
+    int s;
 public:
-    Date(int y_, int m_, int d_, int h_, int min_): y(y_), m(m_), d(d_), h(h_), min(min_) {
+    Date(int y_, int m_, int d_, int h_, int min_, int s_): y(y_), m(m_), d(d_), h(h_), min(min_), s(s_) {
 
     }
     Date() {
@@ -22,9 +23,10 @@ public:
         d = parse(date[8]) * 10 + parse(date[9]);
         h = parse(date[11]) * 10 + parse(date[12]);
         min = parse(date[14]) * 10 + parse(date[15]);
+        s = parse(date[17]) * 10 + parse(date[18]);
     }
     void dump() {
-        std::cout << y <<"-" << m << "-" << d <<"-" << h <<"-" << min <<'\n';
+        std::cout << y <<"-" << m << "-" << d <<"-" << h <<"-" << min << s <<'\n';
     }
     bool operator<(const Date& other) const {
         if (y < other.y)
@@ -51,6 +53,12 @@ public:
                         return true;
                     else if (min > other.min)
                         return false;
+                    }
+                    else {
+                        if (s < other.s)
+                            return true;
+                        else if (s > other.s)
+                            return false;
                     }
                 }
             }   

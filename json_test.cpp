@@ -2,7 +2,7 @@
 #include <fstream>
 #include "dialogue.hpp"
 #include <list>
-#include </home/tamerlan/workspace/Spy/json/single_include/nlohmann/json.hpp>
+#include </home/tamerlan/workspace/json/single_include/nlohmann/json.hpp>
 //#include <json/single_include/nlohmann/json.hpp>
 
 using json = nlohmann::json;
