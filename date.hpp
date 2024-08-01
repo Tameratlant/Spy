@@ -72,7 +72,7 @@ public:
         }
         return true; 
     }
-    bool operator<(const Date& other) const {
+    bool operator==(const Date& other) const {
         if (!(*this<other) && !(*this>other)) {
             //printf("!");
             return true;
