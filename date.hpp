@@ -11,9 +11,7 @@ private:
     int min;
     int s;
 public:
-    Date(int y_, int m_, int d_, int h_, int min_, int s_): y(y_), m(m_), d(d_), h(h_), min(min_), s(s_) {
-
-    }
+    Date(int y_, int m_, int d_, int h_, int min_, int s_): y(y_), m(m_), d(d_), h(h_), min(min_), s(s_) {}
     Date() {
         y = 0;
     }
@@ -50,16 +48,16 @@ public:
                         return false;
                     else {
                         if (min < other.min)
-                        return true;
-                    else if (min > other.min)
-                        return false;
-                    }
-                    else {
+                            return true;
+                        else if (min > other.min)
+                            return false;
+                        else {
                         if (s < other.s)
                             return true;
                         else if (s > other.s)
                             return false;
-                    }
+                        }
+                    }   
                 }
             }   
         }
@@ -74,4 +72,11 @@ public:
         }
         return true; 
     }
+    bool operator<(const Date& other) const {
+        if (!(*this<other) && !(*this>other)) {
+            //printf("!");
+            return true;
+        }
+        return false; 
+
 };
