@@ -24,7 +24,7 @@ public:
         s = parse(date[17]) * 10 + parse(date[18]);
     }
     void dump() {
-        std::cout << y <<"-" << m << "-" << d <<"-" << h <<"-" << min << s <<'\n';
+        std::cout << y << "-" << m << "-" << d << "-" << h << "-" << min << "-" << s << '\n';
     }
     bool operator<(const Date& other) const {
         if (y < other.y)
@@ -78,5 +78,13 @@ public:
             return true;
         }
         return false; 
+    }
+
+    Date& operator++() {
+        //Date tmp = *this;
+        this->d++;
+        //tmp.d++;
+        return *this;
+    }
 
 };
