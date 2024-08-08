@@ -4,12 +4,13 @@
 #include <vector>
 #include <sys/stat.h>
 
-#define BIG_FILE "Wolf.json"
+//#define BIG_FILE "Wolf.json"
 #define MAX_SIZE 100
 #define OUTPUT_NAME "small_result№"
 #define HEADER_NAME "header"
 #define HEAD_SIZE 5
 
+//Создает файл с заголовком из исходного файла
 void header_create(std::ifstream& source_file) {
     if (!source_file.is_open()) {
         std::cerr << "Не удалось открыть файл" << std::endl;
@@ -29,6 +30,7 @@ void header_create(std::ifstream& source_file) {
 
 }
 
+//Копирует заголвок в целевые файлы
 void head_copy(std::ofstream& target_file, std::ifstream& header, int number) {
     std::cout << "head copy called to file " << number <<'\n';
     if (!header.is_open() || !target_file.is_open()) {
@@ -49,8 +51,8 @@ void head_copy(std::ofstream& target_file, std::ifstream& header, int number) {
     return;
 }
 
-std::string copy_massages(std::ifstream& source_file,std::ofstream& target_file, int number) {               //Копирует из большого в маленькие по MAX_SIZE сообщений 
-    std::string line;
+//Копирует по MAX_SIZE из исходного файла в целевые 
+std::string copy_massages(std::ifstream& source_file,std::ofstream& target_file, int number) {
     std::vector<std::string> lines;
     int count  = 0;
     while(count < MAX_SIZE) {
@@ -86,7 +88,8 @@ std::string copy_massages(std::ifstream& source_file,std::ofstream& target_file,
     return lines[lines.size()-1];
 }
 
-int separater(std::ifstream& source_file) {                //делит на файлы по MAX_SIZE сообщений и выводит число созданных файлов
+//делит на файлы по MAX_SIZE сообщений и выводит число созданных файлов
+int separater(std::ifstream& source_file) {                
     int count = 0;
     header_create(source_file);
     std::string last_string;
