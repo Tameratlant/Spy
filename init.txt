@@ -1,0 +1,1 @@
+Place here the absolute path to the file with the correspondence in Json format or enter the file name if it is located in this directory
