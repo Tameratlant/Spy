@@ -82,7 +82,15 @@ public:
 
     Date& operator++() {
         //Date tmp = *this;
-        this->d++;
+        this -> d++;
+        if (d > 30) {
+            d -= 30;
+            m++;
+        }
+        if (m > 12) {
+            m-=12;
+            y++;
+        }
         //tmp.d++;
         return *this;
     }

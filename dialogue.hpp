@@ -14,18 +14,14 @@ private:
     Date date;
     std::string name;
 public:
-    message(std::string date_, std::string name_): date(date_), name(name_) {
-        /*Date date__(date_);
-        date = date__;
-        name = name_;*/
-    }
+    message(std::string date_, std::string name_): date(date_), name(name_) {}
     void dump() {
         std:: cout << "Message from:\n" << name << '\n'; date.dump();
     }
-    Date get_date() {
+    inline Date get_date() {
         return date;
     }
-    std::string get_name() {
+    inline std::string get_name() {
         return name;
     }
 };
@@ -67,7 +63,7 @@ public:
         }
     }
 
-    size_t get_size() {
+    inline size_t get_size() {
         return size;
     }
 
@@ -84,7 +80,7 @@ public:
     }
 
 
-    void count(Date l, Date r, std::string name, int* count_name, int* count_total) {
+    inline void count(Date l, Date r, std::string name, int* count_name, int* count_total) {
         int left = search(l);
         int right = search(r);
         int count = 0;

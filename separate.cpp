@@ -48,70 +48,11 @@ void head_copy(std::ofstream& small_file, std::ifstream& header, int number) {
     header.close();
     return;
 }
-/*
-inline void copy_message(std::ofstream& target_file, std::ofstream& source_file) {
-    std::string line;
-    std::vector <std::string> lines;
-    while (std::getline(source_file, line)) {
-        lines.push_back(line);
-        if (line.find("\"id\": ") != std::string::npos) {
-            break; // Прерываем цикл, если встретили строку с "id: "
-            if (lines.size() > 1) {
-                lines.pop_back();
-            }
-        }
-        targetFile << line << std::endl;
-    }
-} 
 
-int main() {
-
-    std::string sourceFile = "source.txt";  // Замените на ваше имя исходного файла
-    std::string targetFile = "target.txt"; // Замените на ваше имя целевого файла
-    std::ifstream inFile(sourceFile);
-    std::ofstream outFile(targetFile);
-    std::string line;
-    std::vector<std::string> lines;
-    while (getline(inFile, line)) {
-        if (line.find("id: ") != string::npos) {
-            // Закрываем и открываем целевой файл для перезаписи
-            outFile.close();
-            outFile.open(targetFile, ios::out | ios::trunc);
-            // Читаем все строки, кроме последней, в вектор
-            lines.clear();
-            while (getline(inFile, line)) {
-                lines.push_back(line);
-            }
-            // Удаляем последний символ из предпоследнего элемента
-            if (lines.size() > 1) {
-                lines[lines.size() - 2].pop_back();
-            }
-            // Записываем содержимое вектора в файл
-            for (const string& l : lines) {
-                outFile << l << endl;
-            }
-            break;
-        } else {
-            outFile << line << endl;
-        }
-    }
-    inFile.close();
-    outFile.close();
-    return 0;
-}
-*/
 std::string copy_massages(std::ifstream& big_file,std::ofstream& small, int number) {               //Копирует из большого в маленькие по MAX_SIZE сообщений 
     std::string line;
     std::vector<std::string> lines;
     int count  = 0;
-    /*
-    std::string num = std::to_string(number);
-    std::ofstream small (OUTPUT_NAME+num);
-    std::cout<<"Created file "<< OUTPUT_NAME+num <<'\n';
-    int count = 0;
-    //std::cout << "Header copied for file № " << number << '\n';
-    head_copy(small, big_file, number);
-    */
     while(count < MAX_SIZE) {
         if (!std::getline(big_file, line)) {
             printf("End of file\n");
@@ -145,7 +86,7 @@ std::string copy_massages(std::ifstream& big_file,std::ofstream& small, int numb
     return lines[lines.size()-1];
 }
 
-int separater(std::ifstream& big_file) {                //делит на файлы по 3000 сообщений и выводит число созданных файлов
+int separater(std::ifstream& big_file) {                //делит на файлы по MAX_SIZE сообщений и выводит число созданных файлов
     int count = 0;
     
     //std::cout << "Header copied for file № " << number << '\n';
@@ -168,41 +109,8 @@ int separater(std::ifstream& big_file) {                //делит на фай
     return count;
 }
 
-/*
-std::string line;
-    int count = 0;
-    while(count < MAX_SIZE) {
-        if (std::getline(big_file, line)) {
-            if (line.back() == ',' & line[line.length() - 2] == '}') {
-                count++;
-                small_file
-            }
-            small_file << line << std::endl;
-        } else {
-            break;  // Если достигнут конец файла раньше, чем скопировано 10 строк
-        }
-    }
-*/
-
 int main () {
-    /*
-    std::string s= "String№";
-    s = s + std::to_string(123);
-    std::cout << s << '\n';
-    */
-   /*
-   int status = mkdir("JSON_data", 0777);
-    if (status == 0) {
-        std::cout << "Папка создана успешно!" << std::endl;
-        return true;
-    } else {
-        std::cerr << "Ошибка при создании папки!" << std::endl;
-        return false;
-    }
-    */
    std::ifstream big(BIG_FILE);
-   //std::ofstream small(OUTPUT_NAME);
-   //copy_massages(big, small, 0);
    printf("Total number = %d",separater(big));
 }
 
