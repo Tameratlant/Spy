@@ -33,7 +33,7 @@ public:
 class dialogue{
     std::vector <message> data;
     size_t size;
-    std::unordered_map <Date, int> map;
+    //std::unordered_map <Date, int> map;
     
     int search(const Date date) {           //тут будет бинпоиск, честно
         for (int i = 0; i < size; ++i) {
@@ -55,7 +55,7 @@ public:
             data.push_back(buf);
         }
 
-        fill_map();
+        //fill_map();
         
     }
 
@@ -94,7 +94,7 @@ public:
         *count_name = count;
         *count_total = right - left;
     }
-    
+    /*
     void fill_map() {
         
         size_t len = data.size();
@@ -109,6 +109,6 @@ public:
     void count(Date l, Date r) {
         return map[r] - map[l];
     }
-
+    */
 
 };
