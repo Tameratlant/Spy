@@ -1,15 +1,15 @@
-**The project was created for a simple and visual analysis of various statistics on correspondence in Telegram. Spy allows you to see aspects such as the average response time, message statistics by month, day, and hour. Provides keyword search** 
+**This project was created for simple visual analysis of various statistics of your correspondence in Telegram. Spy allows you to view aspects such as the average response time, message statistics by month, day, and hour. Spy also provides keyword search.** 
 
-**The logic of the work**
+**How it work**
 
-The correspondence in Tg is stored in json format. For parsing, it is used https://github.com/nlohmann/json
+In Tg correspondence is stored in json format. For parsing, this project used https://github.com/nlohmann/json.
 
-Due to the fact that this library is not designed for large json files, it is necessary to split the original correspondence into smaller fragments (file separate.cpp )
+Due to the fact that this library is not designed for large json files, it is necessary to split the original correspondence into smaller fragments (file separate.cpp).
 
-In date.cpp implemented date classes for convenient date storage and working with them.
+Date.hpp implemented date classes for convenient date storage and processing.
 
-In dialogue.cpp The message and dialogue classes are described, as well as methods for working with the dialog as a whole. For example, to search for it, add new fragments of the dialog
+Dialogue.hpp contains discriptions of the message and dialogue classes, as well as methods for working with the chat as a whole. For example, to search, add new fragments of the chat.
 
 **How to build**
 
-To build, write in the file init.txt the path to the file with the correspondence and use the Makefile
+To build, input the path to file with the correspondence in file init.txt and run the Makefile.
