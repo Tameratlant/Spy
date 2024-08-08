@@ -64,24 +64,19 @@ public:
         return true;
     }
     bool operator>(const Date& other) const {
-        //printf("!!");
-        //std::cout << (*this<other);
         if (*this<other) {
-            //printf("!");
             return false;
         }
         return true; 
     }
     bool operator==(const Date& other) const {
         if (!(*this<other) && !(*this>other)) {
-            //printf("!");
             return true;
         }
         return false; 
     }
 
     Date& operator++() {
-        //Date tmp = *this;
         this -> d++;
         if (d > 30) {
             d -= 30;
@@ -91,8 +86,6 @@ public:
             m-=12;
             y++;
         }
-        //tmp.d++;
         return *this;
     }
-
 };
