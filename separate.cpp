@@ -72,7 +72,7 @@ std::string copy_massages(std::ifstream& source_file,std::ofstream& target_file,
             lines.pop_back();
             lines[lines.size() - 2].pop_back();
             for (std::string &tmp : lines) {
-                small << line << std::endl;
+                target_file << line << std::endl;
             }
             lines.clear();
             lines.push_back("  {");
@@ -92,11 +92,11 @@ int separater(std::ifstream& source_file) {                //делит на ф�
     std::string last_string;
     while (count < 1000) {
         std::string num = std::to_string(count);
-        std::ofstream small (OUTPUT_NAME+num);
-        small << last_string << std::endl;
+        std::ofstream target_file (OUTPUT_NAME+num);
+        target_file << last_string << std::endl;
         std::ifstream header (HEADER_NAME);
         std::cout<<"Created file "<< OUTPUT_NAME+num <<'\n';
-        head_copy(small, header, count);
+        head_copy(target_file, header, count);
         count++;
         
         last_string = copy_massages(source_file, target_file, count);
