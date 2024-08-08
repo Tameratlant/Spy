@@ -54,6 +54,7 @@ void head_copy(std::ofstream& target_file, std::ifstream& header, int number) {
 //Копирует по MAX_SIZE из исходного файла в целевые 
 std::string copy_massages(std::ifstream& source_file,std::ofstream& target_file, int number) {
     std::vector<std::string> lines;
+    std::string line;
     int count  = 0;
     while(count < MAX_SIZE) {
         if (!std::getline(source_file, line)) {
