@@ -5,10 +5,6 @@
 #include </home/tamerlan/workspace/json/single_include/nlohmann/json.hpp>
 
 using json = nlohmann::json;
-
-
-
-
 struct message {
 private:
     Date date;
@@ -43,16 +39,12 @@ class dialogue{
 public:
     dialogue(json data_) {
         size_t len = data_["messages"].size();
-        //std::cout << "len in const" << len <<'\n';
         size = len;
-        
         for (int i = 0; i < len; ++i) {
             message buf(data_["messages"][i]["date"], data_["messages"][i]["from"]);
             data.push_back(buf);
         }
-
         //fill_map();
-        
     }
 
     void dump() {
@@ -69,9 +61,7 @@ public:
 
     void append(json data_) {
         size_t len = data_["messages"].size();
-        //std::cout << "len in const" << len <<'\n';
         size += len;
-        
         for (int i = 0; i < len; ++i) {
             message buf(data_["messages"][i]["date"], data_["messages"][i]["from"]);
             data.push_back(buf);
