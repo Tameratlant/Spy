@@ -1,7 +1,4 @@
 #include <iostream>
-int parse (char c) {
-    return c - '0';
-}
 struct Date {
 private:
     int y;
@@ -16,12 +13,12 @@ public:
         y = 0;
     }
     Date(std::string date) {
-        y = parse(date[0]) * 1000 + parse(date[1]) * 100 + parse(date[2]) * 10 + parse(date[3]);
-        m = parse(date[5]) * 10 + parse(date[6]);
-        d = parse(date[8]) * 10 + parse(date[9]);
-        h = parse(date[11]) * 10 + parse(date[12]);
-        min = parse(date[14]) * 10 + parse(date[15]);
-        s = parse(date[17]) * 10 + parse(date[18]);
+        y =  std::stoi(date[0]) * 1000 + std::stoi(date[1]) * 100 + std::stoi(date[2]) * 10 + std::stoi(date[3]);
+        m = std::stoi(date[5]) * 10 + std::stoi(date[6]);
+        d = std::stoi(date[8]) * 10 + std::stoi(date[9]);
+        h = std::stoi(date[11]) * 10 + std::stoi(date[12]);
+        min = std::stoi(date[14]) * 10 + std::stoi(date[15]);
+        s = std::stoi(date[17]) * 10 + std::stoi(date[18]);
     }
     void dump() {
         std::cout << y << "-" << m << "-" << d << "-" << h << "-" << min << "-" << s << '\n';
